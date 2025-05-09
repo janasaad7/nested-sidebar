@@ -1,2 +1,42 @@
 <div class="font-semibold text-xl pl-4 py-4">General</div>
-
+<main class="ml-4 flex flex-col gap-4">
+  <form #form = "ngForm" (ngSubmit)="addNewAnimal(type.value, birthday.value)" class="flex flex-col gap-4">
+    <div>
+      <label for="type" class="font-semibold text-md">Animal Type</label>
+      <input
+        type="text"
+        id="type"
+        placeholder="Write the animal type/name"
+        class="block w-full px-4 py-2 mb-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-300 text-gray-600 text-sm"
+        #type required
+      >
+    </div>
+    <div>
+      <label for="birthday" class="font-semibold text-md">Animal Birthday</label>
+      <input
+        type="date"
+        id="birthday"
+        class="block w-full px-4 py-2 mb-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-300 text-gray-600 text-sm"
+        #birthday required>
+    </div>
+    <button type="submit" class="bg-gray-100 rounded-md px-4 py-2 hover:bg-gray-200 cursor-pointer shadow-md">Add Animal</button>
+  </form>
+  <hr class="border-gray-300 border-t-2 w-full rounded-lg">
+  <div class="text-xl font-semibold">Animals</div>
+  <ul class="flex gap-5 flex-col">
+    @for(animal of $animals | async; track animal.id) {
+      <li class="flex gap-10 items-center">
+        <div class="flex flex-col gap-1">
+          <p class="font-semibold capitalize">{{animal.type}}</p>
+          <p>{{animal.birthday | date}}</p>
+        </div>
+        <div class="flex gap-2">
+          <button (click)="openEditDialog(animal.id!)" class="cursor-pointer bg-blue-100 rounded-md px-2 py-1 hover:bg-blue-200">Edit</button>
+          <button (click)="deleteAnimal(animal.id!)" class="cursor-pointer bg-red-200 rounded-md px-2 py-1 hover:bg-red-300">Delete</button>
+        </div>
+      </li>
+    } @empty {
+      <p>No animals found</p>
+    }
+  </ul>
+</main>

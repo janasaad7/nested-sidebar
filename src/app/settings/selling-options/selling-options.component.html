@@ -1,10 +1,9 @@
 <div class="font-semibold text-xl pl-4 py-4">Selling Options</div>
-<div class="w-5xl ml-5 mb-4 grid grid-cols-[220px_1fr] gap-y-6 px-4 py-4 border-2 border-gray-100 rounded-xl text-sm font-semibold">
-
+<form [formGroup]="settingsForm" class="w-5xl ml-5 mb-4 grid grid-cols-[220px_1fr] gap-y-6 px-4 py-4 border-2 border-gray-100 rounded-xl text-sm font-semibold">
   <div class="col-span-2 grid grid-cols-[220px_1fr] items-start border-b-2 border-gray-200 ml-3 mr-3 py-2">
     <span class="text-xs">New vendor product upload</span>
     <div class="flex gap-2">
-      <input type="checkbox" id="vendors" name="vendors" class="peer">
+      <input type="checkbox" id="vendors" formControlName="vendors" class="peer">
       <label for="vendors" class="text-gray-500 peer-checked:text-black">Allow newly registered vendors to add products</label>
     </div>
   </div>
@@ -13,7 +12,7 @@
     <span class="text-xs">Commission type</span>
     <div class="flex flex-col gap-2">
       <select
-        id="commissions" name="commissions"
+        id="commissions" formControlName="commissions"
         class="max-w-xs border border-gray-100 bg-gray-100 rounded-md px-3 py-2 text-sm focus:outline-none"
       >
         <option value="percentage">Percentage</option>
@@ -26,7 +25,7 @@
     <span class="text-xs">Admin commission</span>
     <div class="flex flex-col gap-2">
       <select
-        id="admin-com" name="admin-com"
+        formControlName="adminCom"
         class="max-w-xs border border-gray-100 bg-gray-100 rounded-md px-3 py-2 text-sm focus:outline-none"
       >
         <option value="10%">10%</option>
@@ -38,7 +37,7 @@
   <div class="col-span-2 grid grid-cols-[220px_1fr] items-start border-b-2 border-gray-200 ml-3 mr-3 py-3">
     <span class="text-xs">Order status change</span>
     <div class="flex gap-2">
-      <input type="checkbox" id="status" name="status">
+      <input type="checkbox" id="status" formControlName="status" class="peer">
       <label for="status" class="text-gray-500 peer-checked:text-black">Vendor can update order status</label>
     </div>
   </div>
@@ -46,16 +45,16 @@
   <div class="col-span-2 grid grid-cols-[220px_1fr] items-start border-b-2 border-gray-200 ml-3 mr-3 py-3">
     <span class="text-xs">Disable product popup</span>
     <div class="flex gap-2">
-      <input type="checkbox" id="disable-product" name="disable-product" class="peer">
-      <label for="disable-product" class="text-gray-500 peer-checked:text-black">Disable add new product in popup view</label>
+      <input type="checkbox" id="disableProduct" formControlName="disableProduct" class="peer">
+      <label for="disableProduct" class="text-gray-500 peer-checked:text-black">Disable add new product in popup view</label>
     </div>
   </div>
 
   <div class="col-span-2 grid grid-cols-[220px_1fr] items-start border-b-2 border-gray-200 ml-3 mr-3 py-3">
     <span class="text-xs">Disable welcome wizard</span>
     <div class="flex gap-2">
-      <input type="checkbox" id="disable-wizard" name="disable-wizard" class="peer">
-      <label for="disable-wizard" class="text-gray-500 peer-checked:text-black">Disable welcome wizard for newly registered vendors</label>
+      <input type="checkbox" id="disableWizard" formControlName="disableWizard" class="peer">
+      <label for="disableWizard" class="text-gray-500 peer-checked:text-black">Disable welcome wizard for newly registered vendors</label>
     </div>
   </div>
 
@@ -63,7 +62,7 @@
     <span class="text-xs">Category selection</span>
     <div class="flex flex-col gap-2">
       <select
-        id="category" name="category"
+        formControlName="category"
         class="max-w-xs border border-gray-100 bg-gray-100 rounded-md px-3 py-2 text-sm focus:outline-none"
       >
         <option value="single">Single</option>
@@ -75,9 +74,9 @@
   <div class="col-span-2 grid grid-cols-[220px_1fr] items-start border-b-2 border-gray-200 ml-3 mr-3 py-3">
     <span class="text-xs">Vendors can create tags</span>
     <div class="flex gap-2">
-      <input type="checkbox" id="tags" name="tags" class="peer">
+      <input type="checkbox" id="tags" formControlName="tags" class="peer">
       <label for="tags" class="text-gray-500 peer-checked:text-black">
         Allow vendors to create new product tags from vendor dashboard</label>
     </div>
   </div>
-</div>
+</form>
